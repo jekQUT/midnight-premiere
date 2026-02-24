@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class door : MonoBehaviour
 {
-    //public GameObject intText, key, lockedText;
-    public GameObject interact, key, dialogue;
+    public GameObject interact, key, dialogue, childObject;
     public AudioSource pickupSound;
     public bool interactable, toggle;
     public Animator doorAnim;
@@ -15,7 +14,16 @@ public class door : MonoBehaviour
     public string intString;
     public Text intText;
     public float dialogueTime = 1f;
-    
+    private Shader originalShader;
+    private Renderer childRenderer;
+    public Shader newShader;
+
+    void Start()
+    {
+        childRenderer = childObject.GetComponent<Renderer>();
+        originalShader = childRenderer.material.shader;
+    }
+
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("MainCamera"))
@@ -68,10 +76,15 @@ public class door : MonoBehaviour
                     StopCoroutine("disableDialogue");
                     StartCoroutine("disableDialogue");
                 }
-                {
-                    
-                }
             }
+
+            // Change shader on child object
+            childRenderer.material.shader = newShader;
+        }
+        else
+        {
+            // Revert back to the original shader
+            childRenderer.material.shader = originalShader;
         }
     }
 

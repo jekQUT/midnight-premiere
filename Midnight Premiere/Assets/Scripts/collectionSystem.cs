@@ -6,10 +6,9 @@ using UnityEngine.UI;
 public class collectionSystem : MonoBehaviour
 {
     public static int amountCollected;
-    //public Collider trigger;
     public int finalAmount;
     public Text collectionText;
-    public GameObject triggerObj, triggerObj1, moneyText;
+    public GameObject triggerObj, triggerObj1, moneyText, dialogueTrigger;
     
     void Start()
     {
@@ -22,12 +21,10 @@ public class collectionSystem : MonoBehaviour
         {
             triggerObj.SetActive(true);
             triggerObj1.SetActive(false);
-            //collectionText.gameObject.SetActive(false); // added to resolve issue introduced with render change
             moneyText.SetActive(true);
-            //trigger.enabled = true;
+            dialogueTrigger.SetActive(false);
         }
         
-        //collectionText.text = amountCollected + "/" + finalAmount;
         collectionText.text = amountCollected.ToString();
     }
 }

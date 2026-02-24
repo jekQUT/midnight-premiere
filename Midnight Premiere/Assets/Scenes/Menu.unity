@@ -489,7 +489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 247, y: 210.9}
+  m_AnchoredPosition: {x: 834.4, y: 253.9}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476498117
@@ -525,22 +525,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'CONTROLS
-
-
-    ''W'',''A'',''S'',''D'' + MOUSE    -   MOVE + LOOK
-
-    ''E''   
-    -    INTERACT
-
-    ''F''    -    FLASHLIGHT ON/OFF
-
-    ''Q''   -    KEYPAD CANCEL
-
-    ''SHIFT''   
-    -    SPRINT
-
-    ''ESC''    -    PAUSE MENU'
+  m_Text: "CONTROLS\n\nPAUSE MENU: \t\t'ESC'\nMOVE + LOOK:\t\t'W','A','S','D' + MOUSE\nINTERACT:\t\t\t\t'E'   
+    \nFLASHLIGHT:\t\t\t'F'    \nSPRINT:\t\t\t\t\t 'SHIFT'\nEXIT:\t\t\t\t\t\t'Q'    "
 --- !u!222 &476498118
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1192,7 +1178,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.9, y: 264}
+  m_AnchoredPosition: {x: -5.41, y: 264}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1197575958
@@ -1941,7 +1927,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -244, y: -159.6}
+  m_AnchoredPosition: {x: -807.9, y: -175.3}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1924401917
@@ -1980,28 +1966,26 @@ MonoBehaviour:
   m_Text: 'HINTS
 
 
-    DON''T FORGET TO PICK UP THE FLASHLIGHT.
+    Use the flashlight.
 
-    FLIP LIGHT SWITCHES
-    AS YOU GO SO YOU CAN REMEMBER WHERE YOU''VE BEEN.
+    Turn on lightswitches.
 
-    DON''T LET THE ROBOT CATCH
-    YOU.
+    Collect
+    coins.
 
-    DON''T LET THE SCARECROW SEE YOU.
+    Disable lasers via security switches.
 
-    GATHER 10 COINS FROM THE LOCKED
-    ROOMS TO OPEN THE LEVEL EXIT.
+    Avoid Mother and Father.
 
-    THE KEY IS IN THE SAFE.
+    Pickup
+    Energy Drinks, Popcorn, Batteries.
 
-    THE SAFE CODE
-    IS IN THE TOP RIGHT ROOM ON A STICKY NOTE.
+    Read sticky notes.
 
-    THE LASERS ARE DISABLED BY THE
-    FLIP OF A SWITCH.
+    Look out for
+    a key.
 
-    HAVE FUN!'
+    Use the boxes to hide.'
 --- !u!222 &1924401918
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2494,7 +2478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 695.2, y: -497.5}
+  m_AnchoredPosition: {x: 835.2, y: -497.5}
   m_SizeDelta: {x: 1099, y: 608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2083137950
@@ -2530,7 +2514,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Week 12 Polish (Cycle 3)
+  m_Text: Version 1.1
 --- !u!222 &2083137951
 CanvasRenderer:
   m_ObjectHideFlags: 0

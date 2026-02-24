@@ -12,6 +12,16 @@ public class pickupBattery : MonoBehaviour
     public bool interactable;
     public flashlight flashlightScript;
     
+    public Shader interactableShader; // Reference to the shader to use when interactable is true
+    private Renderer renderer;
+    private Shader originalShader;
+
+    void Start()
+    {
+        renderer = GetComponent<Renderer>();
+        originalShader = renderer.material.shader;
+    }
+
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("MainCamera"))
@@ -19,6 +29,11 @@ public class pickupBattery : MonoBehaviour
             interact.SetActive(true);
             interactable = true;
             intText.text = intString;
+            
+            if (interactableShader != null)
+            {
+                renderer.material.shader = interactableShader;
+            }
         }
     }
 
@@ -28,6 +43,9 @@ public class pickupBattery : MonoBehaviour
         {
             interact.SetActive(false);
             interactable = false;
+            
+            // Reset the shader to the original shader
+            renderer.material.shader = originalShader;
         }
     }
 

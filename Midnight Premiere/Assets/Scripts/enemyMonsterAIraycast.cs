@@ -157,14 +157,16 @@ public class enemyMonsterAIraycast : MonoBehaviour
         walking = false;
         idle = false;
 
-        aiAnim.ResetTrigger("idle");
+        //aiAnim.ResetTrigger("idle");
         aiAnim.ResetTrigger("walk");
-        aiAnim.SetTrigger("run");
-
+        //aiAnim.SetTrigger("run");
+        
+        aiAnim.SetTrigger("walk");
+        
         chaseMusic.Play();
 
         StopCoroutine("nextDest");
-        StopCoroutine("chase");
+        //StopCoroutine("chase");
         StartCoroutine("chase");
     }
 
@@ -177,7 +179,7 @@ public class enemyMonsterAIraycast : MonoBehaviour
         chaseMusic.Stop();
 
         aiAnim.ResetTrigger("idle");
-        aiAnim.ResetTrigger("run");
+        //aiAnim.ResetTrigger("run");
         aiAnim.SetTrigger("walk");
 
         SetRandomDestination();

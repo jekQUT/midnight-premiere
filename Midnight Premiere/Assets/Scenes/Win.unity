@@ -480,9 +480,10 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: YOU ESCAPED TO THE MOVIES!
+  m_Text: "You managed to get to the movies, but couldn\u2019t afford any snacks.
+    \n\nYou had a good time!"
 --- !u!222 &681395461
 CanvasRenderer:
   m_ObjectHideFlags: 0

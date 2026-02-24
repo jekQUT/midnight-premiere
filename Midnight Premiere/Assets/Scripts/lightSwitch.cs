@@ -6,14 +6,22 @@ using UnityEngine.UI;
 
 public class lightSwitch : MonoBehaviour
 {
-    public GameObject interact, light;
+    public GameObject interact, light, childObject;
     public bool toggle = true, interactable;
     public Renderer lightBulb;
     public Material offLight, onLight;
     public AudioSource lightSwitchSound;
-    public Animator switchAnim;
     public Text intText;
     public string intString;
+    private Shader originalShader;
+    private Renderer childRenderer;
+    public Shader newShader;
+    
+    void Start()
+    {
+        childRenderer = childObject.GetComponent<Renderer>();
+        originalShader = childRenderer.material.shader;
+    }
     
     private void OnTriggerStay(Collider other)
     {
@@ -41,10 +49,15 @@ public class lightSwitch : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 toggle = !toggle;
-                //lightSwitchSound.Play();
-                switchAnim.ResetTrigger("press");
-                switchAnim.SetTrigger("press");
+                lightSwitchSound.Play();
             }
+            // Change shader on child object
+            childRenderer.material.shader = newShader;
+        }
+        else
+        {
+            // Revert back to the original shader
+            childRenderer.material.shader = originalShader;
         }
 
         if (toggle == false)
@@ -58,5 +71,6 @@ public class lightSwitch : MonoBehaviour
             light.SetActive(true);
             lightBulb.material = onLight;
         }
+        
     }
 }

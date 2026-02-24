@@ -11,6 +11,30 @@ public class pickupFatStacks : MonoBehaviour
     public Text intText;
     public string intString;
     public static int coinsCollected;
+    public Shader interactableShader; // Reference to the interactable shader
+
+    private Shader originalShader; // Original shader of the object
+    private Renderer objectRenderer; // Renderer component of the object
+    
+    private void Start()
+    {
+        objectRenderer = GetComponent<Renderer>();
+        originalShader = objectRenderer.material.shader;
+        
+        coinsCollected = 0;
+    }
+
+    private void UpdateShader()
+    {
+        if (interactable)
+        {
+            objectRenderer.material.shader = interactableShader;
+        }
+        else
+        {
+            objectRenderer.material.shader = originalShader;
+        }
+    }
 
     void OnTriggerStay(Collider other)
     {
@@ -19,6 +43,7 @@ public class pickupFatStacks : MonoBehaviour
             interact.SetActive(true);
             interactable = true;
             intText.text = intString;
+            UpdateShader(); // Update the shader when interactable is true
         }
     }
     
@@ -28,12 +53,8 @@ public class pickupFatStacks : MonoBehaviour
         {
             interact.SetActive(false);
             interactable = false;
+            UpdateShader(); // Update the shader when interactable is true
         }
-    }
-
-    void Start()
-    {
-        coinsCollected = 0;
     }
 
     void Update()
@@ -49,6 +70,7 @@ public class pickupFatStacks : MonoBehaviour
                 pickupSound.Play();
                 interact.SetActive(false);
                 interactable = false;
+                UpdateShader(); // Update the shader when interactable is true
             }
         }
     }

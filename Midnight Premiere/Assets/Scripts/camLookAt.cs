@@ -28,7 +28,7 @@ public class camLookAt : MonoBehaviour
 
     void Update()
     {
-        //cam.LookAt(player);
+        cam.LookAt(player);
         //transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
     }
 

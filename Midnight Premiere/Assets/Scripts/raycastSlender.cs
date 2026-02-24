@@ -16,17 +16,17 @@ public class raycastSlender : MonoBehaviour
         
         if (Physics.Raycast(slenderTransform.position + offset, direction, out hit, Mathf.Infinity))
         {
-            Debug.DrawLine(slenderTransform.position, hit.point, Color.red, Mathf.Infinity);
+            //Debug.DrawLine(slenderTransform.position, hit.point, Color.red, Mathf.Infinity);
 
             if (hit.collider.gameObject == playerObj)
             {
                 detected = true;
-                Debug.Log("hit");
+                //Debug.Log("hit");
             }
             else
             {
                 detected = false;
-                Debug.Log("lol");
+                //Debug.Log("lol");
             }
 
         }

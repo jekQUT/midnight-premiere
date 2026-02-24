@@ -5,16 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class nextLevel : MonoBehaviour
 {
-    public string sceneName;
-    public int levelNumber;
+    public string sceneName, sceneName1, sceneName2;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            PlayerPrefs.SetInt("level", levelNumber);
-            PlayerPrefs.Save();
-            SceneManager.LoadScene(sceneName);
+            if (collectionSystem.amountCollected < 500)
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+            else if (collectionSystem.amountCollected < 9000)
+            {
+                SceneManager.LoadScene(sceneName1);
+            }
+            else if (collectionSystem.amountCollected >= 9000)
+            {
+                SceneManager.LoadScene(sceneName2);
+            }
         }
     }
 }

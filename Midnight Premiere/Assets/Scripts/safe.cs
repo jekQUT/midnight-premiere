@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class safe : MonoBehaviour
 {
-    public GameObject safecode, numtext, incorrecttext, correcttext, interaction, canceltext;
+    public GameObject safecode, numtext, incorrecttext, correcttext, interaction, childObject, childObject2, childObject3, childObject4;
     public SC_FPSController playerscript;
     public Animator safeOpen;
     public Text numTex;
@@ -18,7 +18,25 @@ public class safe : MonoBehaviour
     public Button but1, but2, but3, but4, but5, but6, but7, but8, but9, but0;
     private int token = 0;
     public Rigidbody playerRigid;
+    private Shader originalShader, originalShader2, originalShader3, originalShader4;
+    private Renderer childRenderer, childRenderer2, childRenderer3, childRenderer4;
+    public Shader newShader, newShader2, newShader3, newShader4;
 
+    void Start()
+    {
+        childRenderer = childObject.GetComponent<Renderer>();
+        originalShader = childRenderer.material.shader;
+        
+        childRenderer2 = childObject2.GetComponent<Renderer>();
+        originalShader2 = childRenderer2.material.shader;
+        
+        childRenderer3 = childObject3.GetComponent<Renderer>();
+        originalShader3 = childRenderer3.material.shader;
+        
+        childRenderer4 = childObject4.GetComponent<Renderer>();
+        originalShader4 = childRenderer4.material.shader;
+    }
+    
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("MainCamera"))
@@ -55,6 +73,19 @@ public class safe : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 interactable = false;
             }
+            // Change shader on child object
+            childRenderer.material.shader = newShader;
+            childRenderer2.material.shader = newShader2;
+            childRenderer3.material.shader = newShader3;
+            childRenderer4.material.shader = newShader4;
+        }
+        else
+        {
+            // Change shader back to original
+            childRenderer.material.shader = originalShader;
+            childRenderer2.material.shader = originalShader2;
+            childRenderer3.material.shader = originalShader3;
+            childRenderer4.material.shader = originalShader4;
         }
 
         if (safeactive == true)
@@ -64,7 +95,6 @@ public class safe : MonoBehaviour
                 numtext.SetActive(true);
                 correcttext.SetActive(false);
                 incorrecttext.SetActive(false);
-                canceltext.SetActive(true);
                 stringCharacters = 0;
                 codeString = "";
                 but1.interactable = true;
@@ -145,7 +175,6 @@ public class safe : MonoBehaviour
         numtext.SetActive(true);
         correcttext.SetActive(false);
         incorrecttext.SetActive(false);
-        canceltext.SetActive(true);
         stringCharacters = 0;
         codeString = "";
         but1.interactable = true;

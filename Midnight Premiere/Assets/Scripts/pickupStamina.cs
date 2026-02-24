@@ -11,17 +11,21 @@ public class pickupStamina : MonoBehaviour
     public Text intText;
     public bool interactable;
     public SC_FPSController staminaScript;
-    
-    // trying to highlight interactable objects
+
+    // Highlighting interactable objects
     public Color highlightColor;
     private Color originalColor;
     private Renderer objectRenderer;
 
-    // trying to highlight interactable objects
-    private void Start()
+    // Shader for interactable objects
+    public Shader interactableShader;
+    private Shader originalShader;
+
+    void Start()
     {
         objectRenderer = GetComponent<Renderer>();
         originalColor = objectRenderer.material.color;
+        originalShader = objectRenderer.material.shader;
     }
 
     void OnTriggerStay(Collider other)
@@ -31,32 +35,30 @@ public class pickupStamina : MonoBehaviour
             interact.SetActive(true);
             interactable = true;
             intText.text = intString;
-            // trying to highlight interactable objects
-            //objectRenderer.material.color = highlightColor;
+            objectRenderer.material.shader = interactableShader;
         }
     }
-    
+
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("MainCamera"))
         {
             interact.SetActive(false);
             interactable = false;
-            // trying to highlight interactable objects
-            //objectRenderer.material.color = originalColor;
+            objectRenderer.material.shader = originalShader;
         }
     }
-    
+
     void Update()
     {
-        if (interactable == true)
+        if (interactable)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 pickupSound.Play();
                 staminaScript.staminaLife = 100f;
                 interact.SetActive(false);
-                this.gameObject.SetActive(false);
+                gameObject.SetActive(false);
                 interactable = false;
             }
         }

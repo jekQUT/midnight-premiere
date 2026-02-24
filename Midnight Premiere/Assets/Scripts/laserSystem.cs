@@ -8,7 +8,7 @@ public class laserSystem : MonoBehaviour
     public static int lasersActive;
     public int finalAmount = 0;
     public Text laserText;
-    public GameObject securityText;
+    public GameObject securityText, dialogueTrigger;
     public GameObject lasertext;
     public GameObject laserimage;
     
@@ -24,8 +24,10 @@ public class laserSystem : MonoBehaviour
             securityText.SetActive(true);
             lasertext.SetActive(false);
             laserimage.SetActive(false);
+            dialogueTrigger.SetActive(false);
         }
 
         laserText.text = lasersActive.ToString();
+        
     }
 }

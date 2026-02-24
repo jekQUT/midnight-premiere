@@ -14,6 +14,29 @@ public class safeCode : MonoBehaviour
     public Text intText;
     public Text noteText;
     public float noteTime;
+    public MeshRenderer noteMeshRenderer;
+    public Shader interactableShader; // Reference to the interactable shader
+
+    private Shader originalShader; // Original shader of the object
+    private Renderer objectRenderer; // Renderer component of the object
+    
+    private void Start()
+    {
+        objectRenderer = GetComponent<Renderer>();
+        originalShader = objectRenderer.material.shader;
+    }
+
+    private void UpdateShader()
+    {
+        if (interactable)
+        {
+            objectRenderer.material.shader = interactableShader;
+        }
+        else
+        {
+            objectRenderer.material.shader = originalShader;
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -24,6 +47,7 @@ public class safeCode : MonoBehaviour
                 interact.SetActive(true);
                 interactable = true;
                 intText.text = intString;
+                UpdateShader(); // Update the shader when interactable is true
             }
         }
     }
@@ -34,6 +58,7 @@ public class safeCode : MonoBehaviour
         {
             interact.SetActive(false);
             interactable = false;
+            UpdateShader(); // Update the shader when interactable is true
         }
     }
 
@@ -53,6 +78,8 @@ public class safeCode : MonoBehaviour
                 interactable = false;
                 codeimage.SetActive(true);
                 codetext.SetActive(true);
+                noteMeshRenderer.enabled = false;
+                UpdateShader(); // Update the shader when interactable is true
             }
         }
     }
